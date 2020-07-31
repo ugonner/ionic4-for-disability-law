@@ -1,0 +1,69 @@
+<!--
+  Generated template for the WelcomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header xmlns="http://www.w3.org/1999/html">
+  <ion-toolbar color="primary">
+      <button ion-button icon-only menuToggle start>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Welcome To The Disability Law Mobile App</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <!--<ion-list  *ngFor="let law of Law; let i = index" >
+    <ion-item>
+        {{ "section "+(i+1)+ " "+ law}}
+    </ion-item>
+    </ion-list>-->
+    <ion-grid>
+        <ion-row>
+            <ion-col col-4  *ngFor="let law of Law; let i = index" >
+                <div *ngIf="((i+2)%2 == 0) then light else dark " ></div>
+                    <ng-template #dark>
+                        <div class="dark-template-divs">
+                            <ion-row class="dark-template-row1" style="">
+                                <ion-col col-11><ion-icon name="bicycle" padding style="font-size: 4em;" (click)="pushPageWithParameters('SectionPage', {langcode: LangCode, sectionid: law.id, sectionnumber: (i+1)})"></ion-icon></ion-col>
+                                <ion-col col-1>{{i+1}}</ion-col>
+                            </ion-row>
+                            <ion-row class="dark-template-row2" style="">
+                                <ion-col col-12>
+                                    <sup>{{ law.title}}</sup>
+                                </ion-col>
+                            </ion-row>
+                        </div>
+                     </ng-template>
+
+                      <ng-template #light class="light-template">
+                      <div class="light-template-divs">
+                          <ion-row class="light-template-row1" style="">
+                              <ion-col col-11><ion-icon name="bicycle" padding style="font-size: 4em;" (click)="pushPageWithParameters('SectionPage', {langcode: LangCode, sectionid: law.id, sectionnumber: (i+1)})"></ion-icon></ion-col>
+                              <ion-col col-1>{{i+1}}</ion-col>
+                          </ion-row>
+                          <ion-row class="light-template-row2" style="">
+                              <ion-col col-12>
+                                  <sup>{{ law.title}}</sup>
+                              </ion-col>
+                          </ion-row>
+                      </div>
+                      </ng-template>
+
+                     <ng-template #brown>
+                        <ion-row style="background: brown;">
+                            <ion-col col-4><ion-icon name="bicycle" style="font-size: 4em;"></ion-icon></ion-col>
+                            <ion-col col-8>
+                                <span padding>section {{i+1}} </span><br/>
+                                <sup>{{ law.title}}</sup>
+                            </ion-col>
+                        </ion-row>
+                    </ng-template>
+
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>
